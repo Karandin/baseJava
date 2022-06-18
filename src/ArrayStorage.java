@@ -27,21 +27,22 @@ public class ArrayStorage {
                 i++;
         }
     }
-// Если честно, не совсем понял про get "dummy". Насколько я понял нужно просто вернуть "dummy" ¯\_(ツ)_/¯ .
+
+    // Если честно, не совсем понял про get "dummy". Насколько я понял нужно просто вернуть "dummy" ¯\_(ツ)_/¯ .
     Resume get(String uuid) {
         int i = 0;
         String x;
-            while (true && i < storage.length) {
-                if (storage[i] == null){
-                    Resume r = new Resume();
-                    r.uuid = uuid;
-                    return r;
-                }
-                x = storage[i].toString();
-                if (x.equals(uuid))
-                    break;
-                else
-                    i++;
+        while (true && i < storage.length) {
+            if (storage[i] == null) {
+                Resume r = new Resume();
+                r.uuid = uuid;
+                return r;
+            }
+            x = storage[i].toString();
+            if (x.equals(uuid))
+                break;
+            else
+                i++;
         }
         return storage[i];
     }
