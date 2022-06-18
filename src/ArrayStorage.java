@@ -5,55 +5,45 @@ import java.util.Arrays;
  */
 public class ArrayStorage {
     Resume[] storage = new Resume[10000];
+    int size;
 
     void clear() {
-        int i = 0;
-        while (i < 10000) {
-            if (storage[i] != null) {
+        for (int i = 0; i < storage.length; i++)
+            if (storage[i] != null)
                 storage[i] = null;
-                i++;
-            } else
+            else
                 break;
-        }
     }
 
+
     void save(Resume r) {
-        int i = 0;
-        while (i < 10000) {
+        for (int i = 0; i < storage.length; i++)
             if (storage[i] == null) {
                 storage[i] = r;
                 break;
-            } else
-                i++;
-        }
+            }
     }
 
-    // Если честно, не совсем понял про get "dummy". Насколько я понял нужно просто вернуть "dummy" ¯\_(ツ)_/¯ .
+
     Resume get(String uuid) {
-        int i = 0;
         String x;
-        while (true && i < storage.length) {
-            if (storage[i] == null) {
-                Resume r = new Resume();
-                r.uuid = uuid;
-                return r;
-            }
+        for (int i = 0; i < storage.length; i++) {
+            if (storage[i] == null)
+                return null;
+
             x = storage[i].toString();
             if (x.equals(uuid))
-                break;
-            else
-                i++;
+                return storage[i];
         }
-        return storage[i];
+        return null;
     }
 
     void delete(String uuid) {
-        int i = 0;
         String x;
-        if (storage[i] == null)
+        if (storage[0] == null)
             return;
 
-        while (i < 10000) {
+        for (int i = 0; i < storage.length; i++) {
             x = storage[i].toString();
             if (x.equals(uuid)) {
                 storage[i] = null;
@@ -63,8 +53,7 @@ public class ArrayStorage {
                 }
                 storage[i] = null;
                 break;
-            } else
-                i++;
+            }
         }
     }
 
@@ -72,24 +61,21 @@ public class ArrayStorage {
      * @return array, contains only Resumes in storage (without null)
      */
     Resume[] getAll() {
-        int i = 0;
-        while (i < 10000) {
-            if (storage[i] == null) {
-                break;
-            } else
-                i++;
-        }
-        return Arrays.copyOfRange(storage, 0, i);
+        for (int i = 0; i < storage.length; i++)
+            if (storage[i] == null)
+                return Arrays.copyOfRange(storage, 0, i);
+
+        return null;
     }
 
     int size() {
-        int i = 0;
-        while (i < 10000) {
-            if (storage[i] == null) {
+        size = 0;
+        for (Resume arr : storage) {
+            if (arr == null)
                 break;
-            } else
-                i++;
+
+            size++;
         }
-        return i;
+        return size;
     }
 }
