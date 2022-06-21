@@ -1,9 +1,11 @@
+import java.util.Scanner;
+
 /**
  * Test for your ArrayStorage implementation
  */
 public class MainTestArrayStorage {
     static final ArrayStorage ARRAY_STORAGE = new ArrayStorage();
-
+Scanner sc = new Scanner(System.in);
     public static void main(String[] args) {
         Resume r1 = new Resume();
         r1.uuid = "uuid1";//
