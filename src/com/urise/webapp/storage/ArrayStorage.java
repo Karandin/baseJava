@@ -3,30 +3,26 @@ package com.urise.webapp.storage;
 import com.urise.webapp.model.Resume;
 
 import java.util.Arrays;
-import java.util.Scanner;
 
 /**
  * Array based storage for Resumes
  */
 public class ArrayStorage {
-    private Resume[] storage = new Resume[10000];
-    private int size;
-    private int availabilyti = -1;
+    private final Resume[] storage = new Resume[10000];
+    private int size = 0;
 
     public void clear() {
-        System.arraycopy(storage, size, storage, 0, size);
+        Arrays.fill(storage, null);
         size = 0;
     }
 
     public void save(Resume r) {
-        if (size > 10000) {
+        int index = findIndex(r.getUuid());
+        if (size == storage.length) {
             System.out.println("storage заполнен, сохранение нового резюме невозможно");
             return;
-        }
-        check_availabilyti(r.getUuid());
-        if (availabilyti != -1) {
+        } else if (index < size) {
             System.out.println("Элемент " + r + " уже есть в storage");
-            availabilyti = -1;
         } else {
             storage[size] = r;
             size++;
@@ -34,50 +30,51 @@ public class ArrayStorage {
     }
 
     public Resume get(String uuid) {
-        check_availabilyti(uuid);
-        if (availabilyti != -1) {
-            int i = availabilyti;
-            availabilyti = -1;
-            return storage[i];
-        } else {
-            System.out.println("Элемента " + uuid + " нет в storage");
+        int index = findIndex(uuid);
+        if (index < size) {
+            return storage[index];
         }
+        System.out.println("Элемента " + uuid + " нет в storage");
         return null;
     }
 
     public void delete(String uuid) {
-        check_availabilyti(uuid);
-        if (availabilyti != -1) {
+        int index = findIndex(uuid);
+        if (index < size) {
             size--;
-            System.arraycopy(storage, availabilyti + 1, storage, availabilyti, size - availabilyti);
-            availabilyti = -1;
+            storage[index] = storage[size];
+            storage[size] = null;
         } else {
             System.out.println("Элемента " + uuid + " нет в storage");
         }
-    }
+        /*
+        if (index < size) {
+            size--;
+            System.arraycopy(storage, index + 1, storage, index, size - index);
+        } else {
+            System.out.println("Элемента " + uuid + " нет в storage");
+        }
 
+         */
+    }
 
     public void update(Resume resume) {
-        check_availabilyti(resume.getUuid());
-        if (availabilyti != -1) {
-            System.out.println("Новое значение для " + resume);
-            Scanner sc = new Scanner(System.in);
-            resume.setUuid(sc.nextLine());
-            storage[availabilyti] = resume;
+        int index = findIndex(resume.getUuid());
+        if (index < size) {
+            storage[index] = resume;
         } else {
-            System.out.println("Не фунциклирует");
+            System.out.println("Элементa " + resume + " нет в storage");
         }
     }
 
-    void check_availabilyti(String s) {
+    int findIndex(String s) {
         for (int i = 0; i < size; i++) {
             if (storage[i].toString().equals(s)) {
-                availabilyti = i;
-                return;
+                return i;
             }
         }
+        return size + 1;
     }
-
 
     /**
      * @return array, contains only Resumes in storage (without null)
