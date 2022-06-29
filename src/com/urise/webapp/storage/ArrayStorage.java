@@ -12,7 +12,7 @@ public class ArrayStorage {
     private int size = 0;
 
     public void clear() {
-        Arrays.fill(storage, null);
+        Arrays.fill(storage, 0, size, null);
         size = 0;
     }
 
@@ -20,7 +20,6 @@ public class ArrayStorage {
         int index = findIndex(r.getUuid());
         if (size == storage.length) {
             System.out.println("storage заполнен, сохранение нового резюме невозможно");
-            return;
         } else if (index < size) {
             System.out.println("Элемент " + r + " уже есть в storage");
         } else {
@@ -67,7 +66,7 @@ public class ArrayStorage {
         }
     }
 
-    int findIndex(String s) {
+    private int findIndex(String s) {
         for (int i = 0; i < size; i++) {
             if (storage[i].toString().equals(s)) {
                 return i;
