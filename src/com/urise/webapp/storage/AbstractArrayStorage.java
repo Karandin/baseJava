@@ -12,41 +12,40 @@ public abstract class AbstractArrayStorage implements Storage {
 
     public void update(Resume resume) {
         int index = findIndex(resume.getUuid());
-        if (index < size) {
-            System.out.println(storage[index] + " теперь имеет значение " + resume.getUuid());
-            storage[index] = resume;
-        } else {
+        if (index < 0) {
             System.out.println("Элементa " + resume + " нет в storage");
+        } else {
+            storage[index] = resume;
         }
     }
 
     public void save(Resume r) {
+        int index = findIndex(r.getUuid());
         if (size == STORAGE_LIMIT) {
             System.out.println("storage заполнен, сохранение нового резюме невозможно");
-        } else if (size == 0) {
-            storage[0] = r;
-            size++;
+        } else if (index > -1) {
+            System.out.println("Резюме " + r + " уже есть в storage");
         } else {
-            saveValue(r);
+            insertResume(r);
             size++;
         }
     }
 
     public Resume get(String uuid) {
         int index = findIndex(uuid);
-        if (index < size) {
-            return storage[index];
+        if (index < 0) {
+            System.out.println("Resume " + uuid + " not exist");
+            return null;
         }
-        System.out.println("Resume " + uuid + " not exist");
-        return null;
+        return storage[index];
     }
 
     public void delete(String uuid) {
         int index = findIndex(uuid);
-        if (index > size) {
+        if (index < 0) {
             System.out.println("Элемента " + uuid + " нет в storage");
         } else {
-            deleteValue(uuid);
+            deleteResume(uuid);
         }
     }
 
@@ -65,9 +64,9 @@ public abstract class AbstractArrayStorage implements Storage {
 
     protected abstract int findIndex(String uuid);
 
-    protected abstract void saveValue(Resume r);
+    protected abstract void insertResume(Resume r);
 
-    protected abstract void deleteValue(String uuid);
+    protected abstract void deleteResume(String uuid);
 
 
 }

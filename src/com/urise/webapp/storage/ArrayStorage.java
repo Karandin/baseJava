@@ -8,7 +8,7 @@ import com.urise.webapp.model.Resume;
 public class ArrayStorage extends AbstractArrayStorage {
 
     @Override
-    public void saveValue(Resume r) {
+    public void insertResume(Resume r) {
         int index = findIndex(r.getUuid());
         if (index < size) {
             System.out.println("Элемент " + r + " уже есть в storage");
@@ -18,7 +18,7 @@ public class ArrayStorage extends AbstractArrayStorage {
     }
 
     @Override
-    public void deleteValue(String uuid) {
+    public void deleteResume(String uuid) {
         int index = findIndex(uuid);
         storage[index] = storage[size - 1];
         storage[size] = null;
@@ -31,6 +31,6 @@ public class ArrayStorage extends AbstractArrayStorage {
                 return i;
             }
         }
-        return size + 1;
+        return -1;
     }
 }
