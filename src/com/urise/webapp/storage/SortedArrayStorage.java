@@ -10,9 +10,8 @@ public class SortedArrayStorage extends AbstractArrayStorage {
     public void insertResume(Resume r) {
         int index = Math.abs(findIndex(r.getUuid())) - 1;
         if (index < size) {
-            for (int i = size - 1; i >= index; i--) {
-                storage[i + 1] = storage[i];
-            }
+            System.arraycopy(storage, index, storage, index+1, size - index);
+            storage[index] = r;
         }
         storage[index] = r;
     }
@@ -21,7 +20,6 @@ public class SortedArrayStorage extends AbstractArrayStorage {
     public void deleteResume(String uuid) {
         int index = findIndex(uuid);
         storage[index] = null;
-        size--;
         System.arraycopy(storage, index + 1, storage, index, size - index);
     }
 

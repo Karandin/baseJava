@@ -46,6 +46,7 @@ public abstract class AbstractArrayStorage implements Storage {
             System.out.println("Элемента " + uuid + " нет в storage");
         } else {
             deleteResume(uuid);
+            size--;
         }
     }
 

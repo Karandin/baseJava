@@ -9,12 +9,7 @@ public class ArrayStorage extends AbstractArrayStorage {
 
     @Override
     public void insertResume(Resume r) {
-        int index = findIndex(r.getUuid());
-        if (index < size) {
-            System.out.println("Элемент " + r + " уже есть в storage");
-        } else {
             storage[size] = r;
-        }
     }
 
     @Override
@@ -22,7 +17,6 @@ public class ArrayStorage extends AbstractArrayStorage {
         int index = findIndex(uuid);
         storage[index] = storage[size - 1];
         storage[size] = null;
-        size--;
     }
 
     protected int findIndex(String s) {
