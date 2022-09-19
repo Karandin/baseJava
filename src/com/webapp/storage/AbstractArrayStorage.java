@@ -1,19 +1,19 @@
-package com.urise.webapp.storage;
+package com.webapp.storage;
 
-import com.urise.webapp.model.Resume;
-import com.urise.webapp.exception.StorageException;
+import com.webapp.model.Resume;
+import com.webapp.exception.StorageException;
 
 import java.util.Arrays;
 
 public abstract class AbstractArrayStorage extends AbstractStorage {
-    protected static final int STORAGE_LIMIT = 10000;
+    public static final int STORAGE_LIMIT = 10000;
 
     protected Resume[] storage = new Resume[STORAGE_LIMIT];
     protected int size = 0;
 
     @Override
     protected boolean isExist(Object searchKey) {
-        int index = (int) doSearchKey(searchKey);
+        int index = (int) doSearchKey((String) searchKey);
         if (index >= 0) {
             return true;
         }
@@ -22,7 +22,7 @@ public abstract class AbstractArrayStorage extends AbstractStorage {
 
     @Override
     protected void doUpdate(Resume r, Object searchKey) {
-        int index = (int) doSearchKey(searchKey);
+        int index = (int) doSearchKey((String) searchKey);
         storage[index] = r;
     }
 
@@ -31,20 +31,20 @@ public abstract class AbstractArrayStorage extends AbstractStorage {
         if (size == STORAGE_LIMIT) {
             throw new StorageException("Storage overflow", r.getUuid());
         }
-        int index = (int) doSearchKey(searchKey);
+        int index = (int) doSearchKey((String) searchKey);
         insertResume(r, index);
         size++;
     }
 
     @Override
     protected Resume doGet(Object searchKey) {
-        int index = (int) doSearchKey(searchKey);
+        int index = (int) doSearchKey((String) searchKey);
         return storage[index];
     }
 
     @Override
     protected void doDelete(Object searchKey) {
-        int index = (int) doSearchKey(searchKey);
+        int index = (int) doSearchKey((String) searchKey);
         deleteResume(index);
         size--;
     }
@@ -62,13 +62,11 @@ public abstract class AbstractArrayStorage extends AbstractStorage {
         return size;
     }
 
-    protected abstract Object doSearchKey(Object searchKey);
+    protected abstract Object doSearchKey(String uuid);
 
     protected abstract void insertResume(Resume r, int index);
 
     protected abstract void deleteResume(Object searchKey);
-
-    public abstract void deleteResume(String uuid);
 }
 
 /*
