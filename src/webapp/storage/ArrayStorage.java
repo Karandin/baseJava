@@ -1,6 +1,6 @@
-package com.webapp.storage;
+package webapp.storage;
 
-import com.webapp.model.Resume;
+import webapp.model.Resume;
 
 /**
  * Array based storage for Resumes
@@ -23,9 +23,8 @@ public class ArrayStorage extends AbstractArrayStorage {
     }
 
     @Override
-    protected void deleteResume(Object searchKey) {
-        int index = (int) doSearchKey((String) searchKey);
-        storage[index] = storage[size - 1];
+    protected void deleteResume(int searchKey) {
+        storage[searchKey] = storage[size - 1];
         storage[size] = null;
     }
 }

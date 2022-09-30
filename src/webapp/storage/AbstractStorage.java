@@ -1,8 +1,8 @@
-package com.webapp.storage;
+package webapp.storage;
 
-import com.webapp.exception.ExistStorageException;
-import com.webapp.exception.NotExistStorageException;
-import com.webapp.model.Resume;
+import webapp.exception.ExistStorageException;
+import webapp.exception.NotExistStorageException;
+import webapp.model.Resume;
 
 public abstract class AbstractStorage implements Storage {
 
@@ -28,16 +28,16 @@ public abstract class AbstractStorage implements Storage {
 
     private Object getExistingSearchKey(String uuid) {
         Object searchKey = doSearchKey(uuid);
-        if (isExist(searchKey)) {
-            throw new ExistStorageException(uuid);
+        if (!isExist(searchKey)) {
+            throw new NotExistStorageException(uuid);
         }
         return searchKey;
     }
 
     private Object getNotExistingSearchKey(String uuid) {
         Object searchKey = doSearchKey(uuid);
-        if (isExist(searchKey) == false) {
-            throw new NotExistStorageException(uuid);
+        if (isExist(searchKey)) {
+            throw new ExistStorageException(uuid);
         }
         return searchKey;
     }

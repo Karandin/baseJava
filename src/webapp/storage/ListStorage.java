@@ -1,6 +1,6 @@
-package com.webapp.storage;
+package webapp.storage;
 
-import com.webapp.model.Resume;
+import webapp.model.Resume;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +20,7 @@ public class ListStorage extends AbstractStorage {
 
     @Override
     protected boolean isExist(Object searchKey) {
-        return searchKey != null;
+        return (int) searchKey >= 0;
     }
 
     @Override
@@ -32,7 +32,7 @@ public class ListStorage extends AbstractStorage {
     @Override
     protected void doSave(Resume r, Object searchKey) {
         int index = (int) searchKey;
-        listStorage.set(index, r);
+        listStorage.add(index, r);
     }
 
     @Override

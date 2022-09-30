@@ -1,6 +1,6 @@
-package com.webapp;
+package webapp;
 
-import com.webapp.model.Resume;
+import webapp.model.Resume;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;

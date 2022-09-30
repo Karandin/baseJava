@@ -1,6 +1,6 @@
-package com.webapp.storage;
+package webapp.storage;
 
-import com.webapp.model.Resume;
+import webapp.model.Resume;
 
 import java.util.Arrays;
 
@@ -17,10 +17,9 @@ public class SortedArrayStorage extends AbstractArrayStorage {
     }
 
     @Override
-    protected void deleteResume(Object searchKey) {
-        int index = (int) doSearchKey((String) searchKey);
-        storage[index] = null;
-        System.arraycopy(storage, index + 1, storage, index, size - index);
+    protected void deleteResume(int searchKey) {
+        storage[searchKey] = null;
+        System.arraycopy(storage, searchKey + 1, storage, searchKey, size - searchKey);
     }
 
     @Override

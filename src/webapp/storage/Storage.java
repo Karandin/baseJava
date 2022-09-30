@@ -1,6 +1,6 @@
-package com.webapp.storage;
+package webapp.storage;
 
-import com.webapp.model.Resume;
+import webapp.model.Resume;
 
 public interface Storage {
 

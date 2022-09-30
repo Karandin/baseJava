@@ -1,14 +1,14 @@
 package com.urise.webapp.storage;
 
-import com.webapp.model.Resume;
-import com.webapp.exception.ExistStorageException;
-import com.webapp.exception.NotExistStorageException;
-import com.webapp.exception.StorageException;
-import com.webapp.storage.Storage;
+import webapp.model.Resume;
+import webapp.exception.ExistStorageException;
+import webapp.exception.NotExistStorageException;
+import webapp.exception.StorageException;
+import webapp.storage.Storage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static com.webapp.storage.AbstractArrayStorage.STORAGE_LIMIT;
+import static webapp.storage.AbstractArrayStorage.STORAGE_LIMIT;
 import static org.junit.jupiter.api.Assertions.*;
 
 public abstract class AbstractArrayStorageTest {
