@@ -1,6 +1,6 @@
 package webapp.storage;
 
-import webapp.model.Resume;
+import model.Resume;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -10,7 +10,7 @@ public class MapStorage extends AbstractStorage {
 
 
     @Override
-    protected Object doSearchKey(String uuid) {
+    protected Object getSearchKey(String uuid) {
             return uuid;
     }
 

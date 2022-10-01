@@ -2,7 +2,7 @@ package webapp.storage;
 
 import webapp.exception.ExistStorageException;
 import webapp.exception.NotExistStorageException;
-import webapp.model.Resume;
+import model.Resume;
 
 public abstract class AbstractStorage implements Storage {
 
@@ -27,7 +27,7 @@ public abstract class AbstractStorage implements Storage {
     }
 
     private Object getExistingSearchKey(String uuid) {
-        Object searchKey = doSearchKey(uuid);
+        Object searchKey = getSearchKey(uuid);
         if (!isExist(searchKey)) {
             throw new NotExistStorageException(uuid);
         }
@@ -35,14 +35,14 @@ public abstract class AbstractStorage implements Storage {
     }
 
     private Object getNotExistingSearchKey(String uuid) {
-        Object searchKey = doSearchKey(uuid);
+        Object searchKey = getSearchKey(uuid);
         if (isExist(searchKey)) {
             throw new ExistStorageException(uuid);
         }
         return searchKey;
     }
 
-    protected abstract Object doSearchKey(String uuid);
+    protected abstract Object getSearchKey(String uuid);
 
     protected abstract boolean isExist(Object searchKey);
 

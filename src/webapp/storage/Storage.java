@@ -1,6 +1,6 @@
 package webapp.storage;
 
-import webapp.model.Resume;
+import model.Resume;
 
 public interface Storage {
 

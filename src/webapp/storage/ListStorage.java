@@ -1,17 +1,17 @@
 package webapp.storage;
 
-import webapp.model.Resume;
+import model.Resume;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ListStorage extends AbstractStorage {
-    List<Resume> listStorage = new ArrayList<>();
+    private final List<Resume> storage = new ArrayList<>();
 
     @Override
-    protected Object doSearchKey(String uuid) {
-        for (int i = 0; i < listStorage.size(); i++) {
-            if (listStorage.get(i).getUuid().equals(uuid)) {
+    protected Object getSearchKey(String uuid) {
+        for (int i = 0; i < storage.size(); i++) {
+            if (storage.get(i).getUuid().equals(uuid)) {
                 return i;
             }
         }
@@ -26,39 +26,39 @@ public class ListStorage extends AbstractStorage {
     @Override
     protected void doUpdate(Resume r, Object searchKey) {
         int index = (int) searchKey;
-        listStorage.set(index, r);
+        storage.set(index, r);
     }
 
     @Override
     protected void doSave(Resume r, Object searchKey) {
         int index = (int) searchKey;
-        listStorage.add(index, r);
+        storage.add(index, r);
     }
 
     @Override
     protected Resume doGet(Object searchKey) {
         int index = (int) searchKey;
-        return listStorage.get(index);
+        return storage.get(index);
     }
 
     @Override
     protected void doDelete(Object searchKey) {
         int index = (int) searchKey;
-        listStorage.remove(index);
+        storage.remove(index);
     }
 
     @Override
     public void clear() {
-        listStorage.clear();
+        storage.clear();
     }
 
     @Override
     public Resume[] getAll() {
-        return listStorage.toArray(new Resume[0]);
+        return storage.toArray(new Resume[0]);
     }
 
     @Override
     public int size() {
-        return listStorage.size();
+        return storage.size();
     }
 }

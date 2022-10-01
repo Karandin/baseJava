@@ -1,6 +1,6 @@
 package webapp;
 
-import webapp.model.Resume;
+import model.Resume;
 import webapp.storage.ArrayStorage;
 
 import java.io.BufferedReader;

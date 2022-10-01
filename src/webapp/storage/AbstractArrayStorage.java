@@ -1,6 +1,6 @@
 package webapp.storage;
 
-import webapp.model.Resume;
+import model.Resume;
 import webapp.exception.StorageException;
 
 import java.util.Arrays;

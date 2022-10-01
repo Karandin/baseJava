@@ -1,6 +1,6 @@
 package webapp.storage;
 
-import webapp.model.Resume;
+import model.Resume;
 
 /**
  * Array based storage for Resumes
@@ -8,7 +8,7 @@ import webapp.model.Resume;
 public class ArrayStorage extends AbstractArrayStorage {
 
     @Override
-    protected Object doSearchKey(String uuid) {
+    protected Object getSearchKey(String uuid) {
         for (int i = 0; i < size; i++) {
             if (storage[i].toString().equals(uuid)) {
                 return i;
