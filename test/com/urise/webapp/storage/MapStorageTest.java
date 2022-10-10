@@ -1,8 +1,8 @@
 package com.urise.webapp.storage;
 
-import webapp.storage.MapStorage;
+import model.storage.MapStorage;
 
-public class MapStorageTest extends AbstractArrayStorageTest {
+public class MapStorageTest extends AbstractStorageTest {
     public MapStorageTest() {
         super(new MapStorage());
     }

@@ -1,7 +1,7 @@
-package webapp.storage;
+package model.storage;
 
-import webapp.exception.ExistStorageException;
-import webapp.exception.NotExistStorageException;
+import model.storage.exception.ExistStorageException;
+import model.storage.exception.NotExistStorageException;
 import model.Resume;
 
 public abstract class AbstractStorage implements Storage {

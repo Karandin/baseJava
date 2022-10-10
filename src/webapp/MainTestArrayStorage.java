@@ -1,8 +1,8 @@
 package webapp;
 
 import model.Resume;
-import webapp.storage.SortedArrayStorage;
-import webapp.storage.Storage;
+import model.storage.SortedArrayStorage;
+import model.storage.Storage;
 
 /**
  * Test for your com.urise.webapp.storage.ArrayStorage implementation
@@ -37,7 +37,7 @@ public class MainTestArrayStorage {
 
     static void printAll() {
         System.out.println("\nGet All");
-        for (Resume r : ARRAY_STORAGE.getAll()) {
+        for (Resume r : ARRAY_STORAGE.getAllSorted()) {
             System.out.println(r);
         }
     }

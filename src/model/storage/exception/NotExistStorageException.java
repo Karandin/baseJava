@@ -1,4 +1,4 @@
-package webapp.exception;
+package model.storage.exception;
 
 public class NotExistStorageException extends StorageException {
     public NotExistStorageException(String uuid) {

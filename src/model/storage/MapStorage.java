@@ -1,8 +1,9 @@
-package webapp.storage;
+package model.storage;
 
 import model.Resume;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class MapStorage extends AbstractStorage {
@@ -45,7 +46,7 @@ public class MapStorage extends AbstractStorage {
     }
 
     @Override
-    public Resume[] getAll() {
+    public List<Resume> getAllSorted() {
         return storage.values().toArray(new Resume[0]);
     }
 

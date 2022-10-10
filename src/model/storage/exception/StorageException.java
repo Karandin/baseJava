@@ -1,4 +1,4 @@
-package webapp.exception;
+package model.storage.exception;
 
 public class StorageException extends RuntimeException {
     private final String uuid;
