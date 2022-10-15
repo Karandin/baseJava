@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import static model.storage.AbstractArrayStorage.STORAGE_LIMIT;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class AbstractArrayStorageTest extends AbstractStorageTest{
+public class AbstractArrayStorageTest extends AbstractStorageTest {
     private final Storage storage;
 
     public AbstractArrayStorageTest(Storage storage) {

@@ -16,7 +16,7 @@ public abstract class AbstractArrayStorage extends AbstractStorage {
 
     @Override
     protected boolean isExist(Object searchKey) {
-            return (int) searchKey >= 0;
+        return (int) searchKey >= 0;
     }
 
     @Override
@@ -49,8 +49,8 @@ public abstract class AbstractArrayStorage extends AbstractStorage {
         size = 0;
     }
 
-    public List<Resume> getAllSorted() {
-        return Collections.sort(Arrays.asList(Arrays.copyOfRange(storage,0,size)));
+    public List<Resume> doGetAll() {
+        return Arrays.asList(Arrays.copyOfRange(storage, 0, size));
     }
 
     public int size() {

@@ -22,7 +22,7 @@ public abstract class AbstractStorageTest {
     private static final Resume RESUME_2 = new Resume(UUID_2);
     private static final Resume RESUME_3 = new Resume(UUID_3);
     private static final Resume RESUME_4 = new Resume(UUID_4);
-    private final Storage storage;
+    protected Storage storage;
     // private Storage storage = new ArrayStorage();
 
 
