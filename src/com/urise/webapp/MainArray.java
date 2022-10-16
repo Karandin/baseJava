@@ -1,7 +1,7 @@
-package webapp;
+package com.urise.webapp;
 
 import model.Resume;
-import model.storage.ArrayStorage;
+import storage.ArrayStorage;
 
 import java.io.BufferedReader;
 import java.io.IOException;

@@ -1,51 +1,44 @@
-package model.storage;
+package storage;
 
 import model.Resume;
 
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-public class ListStorage extends AbstractStorage {
-    private final List<Resume> storage = new ArrayList<>();
+public class MapStorage extends AbstractStorage {
+    private final Map<String, Resume> storage = new HashMap<>();
+
 
     @Override
     protected Object getSearchKey(String uuid) {
-        for (int i = 0; i < storage.size(); i++) {
-            if (storage.get(i).getUuid().equals(uuid)) {
-                return i;
-            }
-        }
-        return -1;
+        return uuid;
     }
 
     @Override
     protected boolean isExist(Object searchKey) {
-        return (int) searchKey >= 0;
+        return storage.containsKey((String) searchKey);
     }
 
     @Override
     protected void doUpdate(Resume r, Object searchKey) {
-        int index = (int) searchKey;
-        storage.set(index, r);
+        storage.put(r.getUuid(), r);
     }
 
     @Override
     protected void doSave(Resume r, Object searchKey) {
-        int index = (int) searchKey;
-        storage.add(index, r);
+        storage.put(r.getUuid(), r);
     }
 
     @Override
     protected Resume doGet(Object searchKey) {
-        int index = (int) searchKey;
-        return storage.get(index);
+        return storage.get((String) searchKey);
     }
 
     @Override
     protected void doDelete(Object searchKey) {
-        int index = (int) searchKey;
-        storage.remove(index);
+        storage.remove((String) searchKey);
     }
 
     @Override
@@ -55,7 +48,8 @@ public class ListStorage extends AbstractStorage {
 
     @Override
     public List<Resume> doGetAll() {
-        return storage;
+        List<Resume> list = new ArrayList<Resume>(storage.values());
+        return list;
     }
 
     @Override

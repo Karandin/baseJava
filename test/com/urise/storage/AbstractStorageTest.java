@@ -1,14 +1,12 @@
-package com.urise.webapp.storage;
+package com.urise.storage;
 
 import model.Resume;
-import model.storage.exception.ExistStorageException;
-import model.storage.exception.NotExistStorageException;
-import model.storage.exception.StorageException;
-import model.storage.Storage;
+import storage.exception.ExistStorageException;
+import storage.exception.NotExistStorageException;
+import storage.Storage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static model.storage.AbstractArrayStorage.STORAGE_LIMIT;
 import static org.junit.jupiter.api.Assertions.*;
 
 public abstract class AbstractStorageTest {
@@ -17,11 +15,12 @@ public abstract class AbstractStorageTest {
     private static final String UUID_2 = "uuid2";
     private static final String UUID_3 = "uuid3";
     private static final String UUID_4 = "uuid4";
+    private static final String NAME = "dummy";
     private static final String UUID_NOT_EXIST = "dummy";
-    private static final Resume RESUME_1 = new Resume(UUID_1);
-    private static final Resume RESUME_2 = new Resume(UUID_2);
-    private static final Resume RESUME_3 = new Resume(UUID_3);
-    private static final Resume RESUME_4 = new Resume(UUID_4);
+    private static final Resume RESUME_1 = new Resume(UUID_1, NAME);
+    private static final Resume RESUME_2 = new Resume(UUID_2, NAME);
+    private static final Resume RESUME_3 = new Resume(UUID_3, NAME);
+    private static final Resume RESUME_4 = new Resume(UUID_4, NAME);
     protected Storage storage;
     // private Storage storage = new ArrayStorage();
 
@@ -106,15 +105,4 @@ public abstract class AbstractStorageTest {
     public void size() {
         assertSize(3);
     }
-    /*
-    @Test
-    public void storageOverflow() {
-        storage.clear();
-        for (int i = 0; i < STORAGE_LIMIT; i++) {
-            storage.save(new Resume("dummy"));
-        }
-        assertThrows(StorageException.class, () -> storage.save(new Resume("dummy")));
-    }
-
-     */
 }

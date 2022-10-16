@@ -1,4 +1,4 @@
-package model.storage.exception;
+package storage.exception;
 
 public class ExistStorageException extends StorageException {
     public ExistStorageException(String uuid) {

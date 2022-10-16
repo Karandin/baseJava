@@ -1,4 +1,4 @@
-package model.storage.exception;
+package storage.exception;
 
 public class StorageException extends RuntimeException {
     private final String uuid;

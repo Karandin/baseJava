@@ -1,11 +1,9 @@
-package model.storage;
+package storage;
 
 import model.Resume;
-import model.storage.exception.StorageException;
+import storage.exception.StorageException;
 
 import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
 public abstract class AbstractArrayStorage extends AbstractStorage {

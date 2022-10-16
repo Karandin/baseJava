@@ -1,4 +1,4 @@
-package webapp;
+package com.urise.webapp;
 
 import model.Resume;
 

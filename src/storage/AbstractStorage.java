@@ -1,10 +1,11 @@
-package model.storage;
+package storage;
 
-import model.storage.exception.ExistStorageException;
-import model.storage.exception.NotExistStorageException;
+import storage.exception.ExistStorageException;
+import storage.exception.NotExistStorageException;
 import model.Resume;
 
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public abstract class AbstractStorage implements Storage {
@@ -51,6 +52,16 @@ public abstract class AbstractStorage implements Storage {
         return searchKey;
     }
 
+    protected static final Comparator<Resume> COMPARATOR = new Comparator<Resume>() {
+        @Override
+        public int compare(Resume o1, Resume o2) {
+            int x = o1.getUuid().compareTo(o2.getUuid());
+            if (x == 0) {
+                return o1.getFullName().compareTo(o2.getFullName());
+            }
+            return x;
+        }
+    };
 
     protected abstract Object getSearchKey(String uuid);
 

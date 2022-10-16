@@ -1,6 +1,6 @@
-package com.urise.webapp.storage;
+package com.urise.storage;
 
-import model.storage.SortedArrayStorage;
+import storage.SortedArrayStorage;
 
 public class SortedArrayStorageTest extends AbstractArrayStorageTest {
     public SortedArrayStorageTest() {

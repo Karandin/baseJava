@@ -1,4 +1,4 @@
-package model.storage;
+package storage;
 
 import model.Resume;
 
