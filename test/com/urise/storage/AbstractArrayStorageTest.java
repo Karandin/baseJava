@@ -1,11 +1,11 @@
 package com.urise.storage;
 
-import model.Resume;
-import storage.Storage;
-import storage.exception.StorageException;
+import com.urise.webapp.model.Resume;
+import com.urise.webapp.storage.Storage;
+import com.urise.webapp.exception.StorageException;
 import org.junit.jupiter.api.Test;
 
-import static storage.AbstractArrayStorage.STORAGE_LIMIT;
+import static com.urise.webapp.storage.AbstractArrayStorage.STORAGE_LIMIT;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public abstract class AbstractArrayStorageTest extends AbstractStorageTest {

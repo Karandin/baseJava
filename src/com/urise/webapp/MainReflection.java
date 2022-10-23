@@ -1,6 +1,6 @@
 package com.urise.webapp;
 
-import model.Resume;
+import com.urise.webapp.model.Resume;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;

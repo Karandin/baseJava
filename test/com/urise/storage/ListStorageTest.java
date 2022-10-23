@@ -1,6 +1,6 @@
 package com.urise.storage;
 
-import storage.ListStorage;
+import com.urise.webapp.storage.ListStorage;
 
 public class ListStorageTest extends AbstractStorageTest {
     public ListStorageTest() {

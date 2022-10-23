@@ -1,14 +1,25 @@
-package storage;
+package com.urise.webapp.storage;
 
-import storage.exception.ExistStorageException;
-import storage.exception.NotExistStorageException;
-import model.Resume;
+import com.urise.webapp.exception.ExistStorageException;
+import com.urise.webapp.exception.NotExistStorageException;
+import com.urise.webapp.model.Resume;
 
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
 public abstract class AbstractStorage implements Storage {
+
+    protected static final Comparator<Resume> COMPARATOR = new Comparator<Resume>() {
+        @Override
+        public int compare(Resume o1, Resume o2) {
+            int x = o1.getUuid().compareTo(o2.getUuid());
+            if (x == 0) {
+                return o1.getFullName().compareTo(o2.getFullName());
+            }
+            return x;
+        }
+    };
 
     public void update(Resume r) {
         Object searchKey = getExistingSearchKey(r.getUuid());
@@ -52,16 +63,7 @@ public abstract class AbstractStorage implements Storage {
         return searchKey;
     }
 
-    protected static final Comparator<Resume> COMPARATOR = new Comparator<Resume>() {
-        @Override
-        public int compare(Resume o1, Resume o2) {
-            int x = o1.getUuid().compareTo(o2.getUuid());
-            if (x == 0) {
-                return o1.getFullName().compareTo(o2.getFullName());
-            }
-            return x;
-        }
-    };
+
 
     protected abstract Object getSearchKey(String uuid);
 
