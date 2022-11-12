@@ -5,21 +5,29 @@ import java.util.Objects;
 
 public class Organization {
     private String website;
-    private String name;
-    private List<Period> periods;
+    private final String name;
+    private final List<Period> periods;
 
-    public Organization(String name, List<Period> periods) {
+    public Organization(String name, List<Period> periods, String website) {
         this.name = name;
         this.periods = periods;
+        this.website = website;
     }
 
-    @Override
-    public String toString() {
-        return "Organization{" +
-                "website='" + website + '\'' +
-                ", name='" + name + '\'' +
-                ", periods=" + periods +
-                '}';
+    public Organization(String name, List<Period> periods) {
+        this(name,periods,null);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public List<Period> getPeriods() {
+        return periods;
+    }
+
+    public void setWebsite(String website) {
+        this.website = website;
     }
 
     @Override
@@ -33,5 +41,14 @@ public class Organization {
     @Override
     public int hashCode() {
         return Objects.hash(website, name, periods);
+    }
+
+    @Override
+    public String toString() {
+        return "Organization{" +
+                "website='" + website + '\'' +
+                ", name='" + name + '\'' +
+                ", periods=" + periods +
+                '}';
     }
 }

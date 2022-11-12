@@ -3,7 +3,7 @@ package com.urise.webapp.model;
 import java.util.Objects;
 
 public class TextSection extends AbstractSection{
-    private String text;
+    private final String text;
 
     public String getText() {
         return text;
@@ -13,12 +13,7 @@ public class TextSection extends AbstractSection{
         this.text = text;
     }
 
-    @Override
-    public String toString() {
-        return "TextSection{" +
-                "text='" + text + '\'' +
-                '}';
-    }
+
 
     @Override
     public boolean equals(Object o) {
@@ -31,5 +26,12 @@ public class TextSection extends AbstractSection{
     @Override
     public int hashCode() {
         return Objects.hash(text);
+    }
+
+    @Override
+    public String toString() {
+        return "TextSection{" +
+                "text='" + text + '\'' +
+                '}';
     }
 }

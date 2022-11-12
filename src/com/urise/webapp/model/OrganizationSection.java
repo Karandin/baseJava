@@ -4,17 +4,10 @@ import java.util.List;
 import java.util.Objects;
 
 public class OrganizationSection extends AbstractSection{
-    private List<Organization> organizations;
+    private final List<Organization> organizations;
 
     public OrganizationSection(List<Organization> organizations) {
         this.organizations = organizations;
-    }
-
-    @Override
-    public String toString() {
-        return "OrganizationSection{" +
-                "organizations=" + organizations +
-                '}';
     }
 
     @Override
@@ -28,5 +21,12 @@ public class OrganizationSection extends AbstractSection{
     @Override
     public int hashCode() {
         return Objects.hash(organizations);
+    }
+
+    @Override
+    public String toString() {
+        return "OrganizationSection{" +
+                "organizations=" + organizations +
+                '}';
     }
 }

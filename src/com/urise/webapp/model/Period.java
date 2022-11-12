@@ -4,9 +4,10 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 public class Period {
-    private String title;
-    private LocalDate startDate;
-    private LocalDate endDate;
+    private final String title;
+    private final LocalDate startDate;
+    private final LocalDate endDate;
+    private final String description;
 
     public Period(String title, LocalDate startDate, LocalDate endDate, String description) {
         this.title = title;
@@ -15,14 +16,20 @@ public class Period {
         this.description = description;
     }
 
-    @Override
-    public String toString() {
-        return "Period{" +
-                "title='" + title + '\'' +
-                ", startDate=" + startDate +
-                ", endDate=" + endDate +
-                ", description='" + description + '\'' +
-                '}';
+    public String getTitle() {
+        return title;
+    }
+
+    public LocalDate getStartDate() {
+        return startDate;
+    }
+
+    public LocalDate getEndDate() {
+        return endDate;
+    }
+
+    public String getDescription() {
+        return description;
     }
 
     @Override
@@ -38,5 +45,14 @@ public class Period {
         return Objects.hash(title, startDate, endDate, description);
     }
 
-    private String description;
+
+    @Override
+    public String toString() {
+        return "Period{" +
+                "title='" + title + '\'' +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
+                ", description='" + description + '\'' +
+                '}';
+    }
 }

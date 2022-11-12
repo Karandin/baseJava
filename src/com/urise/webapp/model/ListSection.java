@@ -4,13 +4,14 @@ import java.util.List;
 import java.util.Objects;
 
 public class ListSection extends AbstractSection{
-    private List<String> list;
+    private final List<String> list;
 
-    @Override
-    public String toString() {
-        return "ListSection{" +
-                "list=" + list +
-                '}';
+    public ListSection(List<String> list) {
+        this.list = list;
+    }
+
+    public List<String> getList() {
+        return list;
     }
 
     @Override
@@ -26,11 +27,10 @@ public class ListSection extends AbstractSection{
         return Objects.hash(list);
     }
 
-    public List<String> getList() {
-        return list;
-    }
-
-    public ListSection(List<String> list) {
-        this.list = list;
+    @Override
+    public String toString() {
+        return "ListSection{" +
+                "list=" + list +
+                '}';
     }
 }
