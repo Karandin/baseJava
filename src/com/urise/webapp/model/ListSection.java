@@ -1,36 +1,45 @@
 package com.urise.webapp.model;
 
+
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
-public class ListSection extends AbstractSection{
-    private final List<String> list;
 
-    public ListSection(List<String> list) {
-        this.list = list;
+public class ListSection extends Section {
+    private final List<String> items;
+
+    public ListSection(String... items) {
+        this(Arrays.asList(items));
     }
 
-    public List<String> getList() {
-        return list;
+    public ListSection(List<String> items) {
+        Objects.requireNonNull(items, "items must not be null");
+        this.items = items;
+    }
+
+    public List<String> getItems() {
+        return items;
+    }
+
+    @Override
+    public String toString() {
+        return items.toString();
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+
         ListSection that = (ListSection) o;
-        return list.equals(that.list);
+
+        return items.equals(that.items);
+
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(list);
-    }
-
-    @Override
-    public String toString() {
-        return "ListSection{" +
-                "list=" + list +
-                '}';
+        return items.hashCode();
     }
 }

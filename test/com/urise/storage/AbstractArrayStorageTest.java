@@ -1,24 +1,28 @@
 package com.urise.storage;
 
-import com.urise.webapp.model.Resume;
-import com.urise.webapp.storage.Storage;
 import com.urise.webapp.exception.StorageException;
-import org.junit.jupiter.api.Test;
+import com.urise.webapp.model.Resume;
+import com.urise.webapp.storage.AbstractArrayStorage;
+import com.urise.webapp.storage.Storage;
+import org.junit.Assert;
+import org.junit.Test;
 
-import static com.urise.webapp.storage.AbstractArrayStorage.STORAGE_LIMIT;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+
 
 public abstract class AbstractArrayStorageTest extends AbstractStorageTest {
-    public AbstractArrayStorageTest(Storage storage) {
+    protected AbstractArrayStorageTest(Storage storage) {
         super(storage);
     }
 
-    @Test
-    public void storageOverflow() {
-        storage.clear();
-        for (int i = 0; i < STORAGE_LIMIT; i++) {
-            storage.save(new Resume("dummy"));
+    @Test(expected = StorageException.class)
+    public void saveOverflow() throws Exception {
+        try {
+            for (int i = 4; i <= AbstractArrayStorage.STORAGE_LIMIT; i++) {
+                storage.save(new Resume("Name" + i));
+            }
+        } catch (StorageException e) {
+            Assert.fail();
         }
-        assertThrows(StorageException.class, () -> storage.save(new Resume("dummy")));
+        storage.save(new Resume("Overflow"));
     }
 }

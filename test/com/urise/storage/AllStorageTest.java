@@ -1,6 +1,7 @@
 package com.urise.storage;
 
-import java.util.List;
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses (
@@ -8,7 +9,8 @@ import java.util.List;
                 ArrayStorageTest.class,
                 SortedArrayStorageTest.class,
                 ListStorageTest.class,
-                MapStorageTest.class,
+                MapUuidStorageTest.class,
+                MapResumeStorageTest.class
         })
 public class AllStorageTest {
 }
