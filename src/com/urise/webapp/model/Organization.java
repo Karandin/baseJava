@@ -14,7 +14,6 @@ import static com.urise.webapp.util.DateUtil.NOW;
 import static com.urise.webapp.util.DateUtil.of;
 
 
-
 public class Organization {
     private final Link homePage;
     private List<Position> positions = new ArrayList<>();

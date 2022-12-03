@@ -1,12 +1,14 @@
 package com.urise.storage;
 
+import com.urise.webapp.exception.ExistStorageException;
 import com.urise.webapp.exception.StorageException;
 import com.urise.webapp.model.Resume;
 import com.urise.webapp.storage.AbstractArrayStorage;
 import com.urise.webapp.storage.Storage;
 import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
 public abstract class AbstractArrayStorageTest extends AbstractStorageTest {
@@ -14,7 +16,7 @@ public abstract class AbstractArrayStorageTest extends AbstractStorageTest {
         super(storage);
     }
 
-    @Test(expected = StorageException.class)
+    @Test
     public void saveOverflow() throws Exception {
         try {
             for (int i = 4; i <= AbstractArrayStorage.STORAGE_LIMIT; i++) {
@@ -23,6 +25,6 @@ public abstract class AbstractArrayStorageTest extends AbstractStorageTest {
         } catch (StorageException e) {
             Assert.fail();
         }
-        storage.save(new Resume("Overflow"));
+        assertThrows(ExistStorageException.class, () -> storage.save(new Resume("dummy")));
     }
 }
