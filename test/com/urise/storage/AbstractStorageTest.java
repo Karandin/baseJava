@@ -4,6 +4,7 @@ import com.urise.webapp.exception.ExistStorageException;
 import com.urise.webapp.exception.NotExistStorageException;
 import com.urise.webapp.model.*;
 import com.urise.webapp.storage.Storage;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 
@@ -11,8 +12,6 @@ import java.time.Month;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.*;
 
 public abstract class AbstractStorageTest {
@@ -97,8 +96,8 @@ public abstract class AbstractStorageTest {
     @Test
     public void getAllSorted() throws Exception {
         List<Resume> list = storage.getAllSorted();
-        assertEquals(3, list.size());
-        assertEquals(list, Arrays.asList(R1, R2, R3));
+        Assertions.assertEquals(3, list.size());
+        Assertions.assertEquals(list, Arrays.asList(R1, R2, R3));
     }
 
     @Test
@@ -140,10 +139,10 @@ public abstract class AbstractStorageTest {
     }
 
     private void assertGet(Resume r) {
-        assertEquals(r, storage.get(r.getUuid()));
+        Assertions.assertEquals(r, storage.get(r.getUuid()));
     }
 
     private void assertSize(int size) {
-        assertEquals(size, storage.size());
+        Assertions.assertEquals(size, storage.size());
     }
 }
